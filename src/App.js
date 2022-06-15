@@ -1,25 +1,20 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { db } from './firebase.js';
+import { collection , query, orderBy , onSnapshot, addDoc,serverTimestamp} from 'firebase/firestore';
 import './App.css';
+import Content from './content';
+import RouterPage from './router';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+return (
+<div className="App">
+<Router>
+    <Routes>
+        <Route exact path="/" element={<Content />} />
+        <Route exact path="/router" element={<RouterPage />} />
+    </Routes>
+</Router>
+</div>
+);
 }
-
 export default App;
